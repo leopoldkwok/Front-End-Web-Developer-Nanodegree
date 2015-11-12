@@ -81,7 +81,7 @@ h1 {
 .my-picture {
   display: block;
   margin: 0 auto 10px;
-  width: 100%;
+  max-width: 100%;
   border: 2px solid white;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
