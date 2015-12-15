@@ -86,8 +86,25 @@ education["name"] = "Nova Southeastern University";
 education["years"] = "2005-2013";
 education["city"] = "Fort Lauderdale, FL, US";
 
-$("#main").append(work["position"]);
-$("#main").append(education.name);
+// $("#main").append(work["position"]);
+// $("#main").append(education.name);
+
+var education = {
+	"schools": [
+		{
+			"name": "Eckerd College",
+			"city": "Saint Petersburg, FL, US",
+			"degree": "BA",
+			"major": ["CompSci", "French"]
+		},
+		{
+			"name": "Nova Southeastern University",
+			"city": "Fort Lauderdale, FL, US",
+			"degree": "Masters",
+			"major": ["CompSci"]
+		},
+	]
+};
 
 
 
