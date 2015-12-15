@@ -86,8 +86,7 @@ education["name"] = "Nova Southeastern University";
 education["years"] = "2005-2013";
 education["city"] = "Fort Lauderdale, FL, US";
 
-// $("#main").append(work["position"]);
-// $("#main").append(education.name);
+
 
 var education = {
 	"schools": [
@@ -102,9 +101,12 @@ var education = {
 			"city": "Fort Lauderdale, FL, US",
 			"degree": "Masters",
 			"major": ["CompSci"]
-		},
+		}
 	]
-};
+}
+
+// $("#main").append(work["position"]);
+// $("#main").append(education.name);
 
 
 
