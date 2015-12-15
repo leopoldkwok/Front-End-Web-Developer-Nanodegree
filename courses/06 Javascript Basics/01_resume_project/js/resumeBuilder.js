@@ -70,6 +70,31 @@ bio["email"] = "james.williams@udacity.com";
 
 $("#main").append(bio.city);
 
+// Practice with Object Syntax
+
+// Dot notation
+
+var work = {};
+work.position = "Course Developer";
+work.employer = "Udacity";
+work.years = 0.3;
+
+// bracket notation
+
+var education = {};
+education["name"] = "Nova Southeastern University";
+education["years"] = "2005-2013";
+education["city"] = "Fort Lauderdale, FL, US";
+
+$("#main").append(work["position"]);
+$("#main").append(education.name);
+
+
+
+
+
+
+
 
 
 
