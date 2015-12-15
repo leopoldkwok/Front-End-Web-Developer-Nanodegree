@@ -88,32 +88,53 @@ education["city"] = "Fort Lauderdale, FL, US";
 
 
 
-var education = {
-	"schools": [
-		{
-			"name": "Eckerd College",
-			"city": "Saint Petersburg, FL, US",
-			"degree": "BA",
-			"major": ["CompSci", "French"]
-		},
-		{
-			"name": "Nova Southeastern University",
-			"city": "Fort Lauderdale, FL, US",
-			"degree": "Masters",
-			"major": ["CompSci"]
-		}
-	]
-}
+// var education = {
+// 	"schools": [
+// 		{
+// 			"name": "Eckerd College",
+// 			"city": "Saint Petersburg, FL, US",
+// 			"degree": "BA",
+// 			"major": ["CompSci", "French"]
+// 		},
+// 		{
+// 			"name": "Nova Southeastern University",
+// 			"city": "Fort Lauderdale, FL, US",
+// 			"degree": "Masters",
+// 			"major": ["CompSci"]
+// 		}
+// 	]
+// }
 
 // $("#main").append(work["position"]);
 // $("#main").append(education.name);
 
 
-
-
-
-
-
-
-
-
+var education = {
+	"schools": [
+		{
+			"name": "Nova Southeastern University",
+			"location": "Fort Lauderdale, FL",
+			"degree":"Masters",
+			"majors":["CS"],
+			"dates": 2013,
+			"url": "http://example.com"
+		},
+		{
+			"name":"Eckerd College",
+			"location": "Saint Petersburg, FL",
+			"degree": "BA",
+			"majors":["CS"],
+			"dates": 2003,
+			"url":"http://example.com"
+		}
+	]
+,
+	"onlineCourses": [
+		{
+			"title":"Javascript Syntax",
+			"school":"Udacity",
+			"dates": 2014,
+			"url": "http://www.udacity.com/course/ud804"
+		}
+	]
+}
