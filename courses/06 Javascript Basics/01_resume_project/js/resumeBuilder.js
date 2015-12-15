@@ -36,4 +36,7 @@ var skills = ["awesomeness", "programming", "teaching", "JS"];
 
 // $("#main").append(skills);
 
-$("#main").append(skills[0]);
+// $("#main").append(skills[0]);
+
+$("#main").append(skills.length);
+
