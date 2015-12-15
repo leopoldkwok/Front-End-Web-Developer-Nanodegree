@@ -40,3 +40,13 @@ var skills = ["awesomeness", "programming", "teaching", "JS"];
 
 $("#main").append(skills.length);
 
+var bio = {
+	"name" : "James",
+	"age" : 32,
+	"skills" : skills
+};
+
+$("#main").append(bio.name);
+
+
+
