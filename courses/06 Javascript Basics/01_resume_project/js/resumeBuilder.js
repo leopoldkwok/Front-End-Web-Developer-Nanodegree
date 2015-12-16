@@ -133,6 +133,17 @@ function displayWork() {
 
 displayWork();
 
+var displayProjects = function() {
+	// code goes here
+
+}
+
+// encpsulate - holding the display function inside the projects object
+
+projects.display = function() {
+	// display code goes here
+}
+
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
@@ -194,6 +205,8 @@ console.log(locationizer(work));
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
+// Internalize Names
+
 function inName(name) {
 	name = name.trim().split(" "); // trim removes white space front and bacl of the string
 	console.log(name);
@@ -204,6 +217,11 @@ function inName(name) {
 };
 
 $('#main').append(internationalizeButton);
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 // $("#main").append("Leopold Kwok");
