@@ -7,6 +7,8 @@ of '#family2'. '#bruce' should have two <div>s as children, '#madison' and '#hun
 
 // Your code goes here!
 
+$(document).ready(function(){
+
 var family1, family2, bruce, madison, hunter; //create the variables first
 
 family1 = $('#family1');
@@ -19,10 +21,12 @@ madison = $('<div id="madison"><h3>Madison</h3></div>');
 
 hunter = $('<div id="hunter"><h3>Hunter</h3></div>');
 
-family2.insertAfter(family1);
+family2.insertAfter(family1).append(bruce);
 
-family2.append(bruce);
+// family2.append(bruce);
 
-bruce.append(madison);
+bruce.append(madison).append(hunter);
 
-bruce.append(hunter);
+// bruce.append(hunter);
+
+});
