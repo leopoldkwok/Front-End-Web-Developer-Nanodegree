@@ -68,15 +68,12 @@ var projects = {
 			"title": "Sample Project 1",
 			"dates": "2014",
 			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg.",
-			"images":[
-				"https://lh3.ggpht.com/23-sq0p0GqF06YX3BwIYPIXLX_Ma_clLXySKEHlphqlxr21-PPbC80U8SjDi96KTWbNjKfY2Pdq_gyFK9A=s300#w=1757&h=1080",
-				"https://lh3.ggpht.com/23-sq0p0GqF06YX3BwIYPIXLX_Ma_clLXySKEHlphqlxr21-PPbC80U8SjDi96KTWbNjKfY2Pdq_gyFK9A=s300#w=1757&h=1080"
-			]
+			"images":["images/image1.png"]
 		}
 	]
-}
+};
 
-// Displaying Bio Information
+// Bio Section
 
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -103,22 +100,6 @@ bio.display = function() {
 	};
 
 };
-
-// if(bio.skills.length > 0) {
-
-// 	$("#header").append(HTMLskillsStart);
-
-// 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-// 	$("#skills").append(formattedSkill);
-// 	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-// 	$("#skills").append(formattedSkill);
-// 	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-// 	$("#skills").append(formattedSkill);
-// 	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-// 	$("#skills").append(formattedSkill);
-
-// }
-
 
 // Work Section
 function displayWork() {
@@ -169,9 +150,8 @@ projects.display = function() {
 
 
 
-
-
 // call the functions
 
 displayWork();
 bio.display();
+projects.display();
