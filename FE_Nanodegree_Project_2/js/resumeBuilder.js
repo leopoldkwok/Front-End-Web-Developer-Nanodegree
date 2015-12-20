@@ -19,7 +19,7 @@ var education = {
 	"schools": [
 		{
 			"name":"Nova Southeastern University",
-			"city":"Fort Lauderdale, FL",
+			"location":"Fort Lauderdale, FL",
 			"degree": "Masters",
 			"majors":["CS"],
 			"dates": 2013,
@@ -27,7 +27,7 @@ var education = {
 		},
 		{
 			"name": "Eckered College",
-			"city": "Saint Petersburg, FL",
+			"location": "Saint Petersburg, FL",
 			"degree":"BA",
 			"majors":["CS"],
 			"dates": 2003,
@@ -147,6 +147,34 @@ projects.display = function() {
 	}
 }
 
+// education section
+
+education.display = function() {
+
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+
+		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		$(".education-entry:last").append(formattedName + formattedDegree, formattedDates, formattedLocation, formattedMajor);
+	}
+
+	$("#education").append(HTMLonlineClasses);
+		for(var course in education.onlineCourses) {
+
+			$("#education").append(HTMLschoolStart);
+				var formattedlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+				var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+				var formattedonlineDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+				var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+
+				$(".education-entry:last").append(formattedlineTitle + formattedonlineSchool, formattedonlineDate, formattedUrl);
+		}
+};
+
 
 
 
@@ -155,3 +183,4 @@ projects.display = function() {
 displayWork();
 bio.display();
 projects.display();
+education.display();
