@@ -138,10 +138,29 @@ var displayProjects = function() {
 
 }
 
-// encpsulate - holding the display function inside the projects object
+// encapsulate - holding the display function inside the projects object
 
 projects.display = function() {
 	// display code goes here
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		$(".project-entry:last").append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formattedDescription);
+
+		if(projects.projects[project].images.length > 0) {
+			for(image in projects.projects[project].images) {
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+				$(".project-entry:last").append(formattedImage);
+			}
+		}
+	}
 }
 
 $(document).click(function(loc) {
@@ -150,6 +169,9 @@ $(document).click(function(loc) {
 
 	logClicks(x,y);
 });
+
+// you want to see a map? here's a map
+$("#mapDiv").append(googleMap);
 
 // return statements
 
