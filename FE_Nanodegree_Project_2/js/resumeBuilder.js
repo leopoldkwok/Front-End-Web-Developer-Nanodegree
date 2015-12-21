@@ -195,5 +195,5 @@ displayWork();
 projects.display();
 education.display();
 
-$("#mapDiv").append(googleMap);
-$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap); // activates the google map features
+$("#main").append(internationalizeButton); // This is placed right at the bottom of the screen
