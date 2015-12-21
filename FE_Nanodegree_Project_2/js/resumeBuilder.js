@@ -126,6 +126,7 @@ function displayWork() {
 projects.display = function() {
 	// display code goes here
 	for (project in projects.projects) {
+
 		$("#projects").append(HTMLprojectStart);
 
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -151,6 +152,7 @@ projects.display = function() {
 education.display = function() {
 
 	for (school in education.schools) {
+
 		$("#education").append(HTMLschoolStart);
 
 		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -162,6 +164,7 @@ education.display = function() {
 	}
 
 	$("#education").append(HTMLonlineClasses);
+
 		for(var course in education.onlineCourses) {
 
 			$("#education").append(HTMLschoolStart);
@@ -174,6 +177,17 @@ education.display = function() {
 		}
 };
 
+// Internalize Names
+
+function inName(name) {
+	name = name.trim().split(" "); // trim removes white space front and back of the string
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+	return name[0] +" "+name[1];
+}
+
 // call the functions
 
 bio.display();
@@ -182,3 +196,4 @@ projects.display();
 education.display();
 
 $("#mapDiv").append(googleMap);
+$("#main").append(internationalizeButton);
