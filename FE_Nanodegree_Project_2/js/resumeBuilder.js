@@ -3,17 +3,37 @@
 var bio = {
 	"name":"Leopold Kwok",
 	"role": "Junior Web Developer",
-	"contacts": [{
-		"mobile":"0778-999-5094",
+	"contacts": {
+		"mobile": "0778-999-5094",
 		"email": "Leopoldkwok@gmail.com",
-		"github":"LeopoldKwok",
-		"twitter":"@LeopoldKwok",
-		"location":"London"
-	}],
+		"github": "LeopoldKwok",
+		"twitter": "@LeopoldKwok",
+		"location": "London"
+	},
 	"welcomeMessage": "I am fascinated by technology that I recentyly pursued a career change from marketing to web development",
 	"skills":["Love to Learn", "Good communicator", "Hard Worker", "Enjoy working as a team"],
 	"biopic": "images/fry.jpg"
-};
+}
+
+var work = {
+	"jobs": [
+		{
+			"employer": "Planet Express",
+			"title": "Delivery Boy",
+			"dates": "January 3000 - Future",
+			"location" : "New York",
+			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+		},
+		{
+			"employer": "Panucci's Pizza",
+			"title": "Delivery Boy",
+			"dates": "1998 - December 31, 1999",
+			"location": "Florida",
+			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+
+		}
+	]
+}
 
 var education = {
 	"schools": [
@@ -44,24 +64,6 @@ var education = {
 	]
 }
 
-var work = {
-	"jobs": [
-		{
-			"employer": "Planet Express",
-			"title": "Delivery Boy",
-			"dates": "January 3000 - Future",
-			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-		},
-		{
-			"employer": "Panucci's Pizza",
-			"title": "Delivery Boy",
-			"dates": "1998 - December 31, 1999",
-			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-
-		}
-	]
-}
-
 var projects = {
 	"projects": [
 		{
@@ -71,34 +73,31 @@ var projects = {
 			"images":["images/image1.png"]
 		}
 	]
-};
+}
 
 // Bio Section
-
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
 	var formattedImage = HTMLbioPic.replace("%data%", bio.biopic);
-	var formattedMessage = HTMLWelcomeMsg.replace("%data", bio.welcomeMessage);
+	var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 	$("#header").prepend(formattedRole).prepend(formattedName).append(formattedImage, formattedMessage);
 	$("#header").append(HTMLskillsStart);
 
-	for(skill in bio.skills) {
+	$("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+
+	for(var skill in bio.skills) {
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
 		$("#skills").append(formattedSkills);
-	};
-
-	for(contact in bio.contacts) {
-		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
-		var formattedEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
-		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
-		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[contact].twitter);
-		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
-		$("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-		$("#footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-	};
-
+	}
 };
 
 // Work Section
@@ -175,12 +174,11 @@ education.display = function() {
 		}
 };
 
-
-
-
 // call the functions
 
-displayWork();
 bio.display();
+displayWork();
 projects.display();
 education.display();
+
+$("#mapDiv").append(googleMap);
