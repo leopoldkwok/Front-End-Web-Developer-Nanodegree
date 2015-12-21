@@ -20,15 +20,15 @@ var work = {
 		{
 			"employer": "Planet Express",
 			"title": "Delivery Boy",
-			"dates": "January 3000 - Future",
 			"location" : "New York",
+			"dates": "January 3000 - Future",
 			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
 		},
 		{
 			"employer": "Panucci's Pizza",
 			"title": "Delivery Boy",
-			"dates": "1998 - December 31, 1999",
 			"location": "Florida",
+			"dates": "1998 - December 31, 1999",
 			"description": "Who moved my cheese cheesy feet cauliflower cheese. Quesp taleggio when the cheese comes out every everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
 
 		}
@@ -58,7 +58,7 @@ var education = {
 		{
 			"title": "JavaScript Crash Course",
 			"school":"Udacity",
-			"dates": 2014,
+			"date": 2014,
 			"url": "http:///www.udacity.com/course/ud804"
 		}
 	]
@@ -170,7 +170,7 @@ education.display = function() {
 			$("#education").append(HTMLschoolStart);
 				var formattedlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
 				var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-				var formattedonlineDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+				var formattedonlineDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
 				var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
 
 				$(".education-entry:last").append(formattedlineTitle + formattedonlineSchool, formattedonlineDate, formattedUrl);
