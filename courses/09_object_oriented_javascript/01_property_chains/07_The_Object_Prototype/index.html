@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>The Object Prototype</title>
+</head>
+<body>
+	<script>
+		var gold = {a:1};
+		console.log(gold.a); // 1
+		console.log(gold.z); //undefined
+
+		var blue = extend({}, gold); // copys all the properties of the object from gold
+
+		blue.b = 2; //adding a new property to the blue object
+
+		console.log(blue.a); // 1
+		console.log(blue.b); // 2
+		console.log(blue.z); // undefined
+
+		var rose = Object.create(gold); // this works
+		rose.b = 2;
+		console.log(rose.a); // 1 ongoing lookup-time delegation
+		console.log(rose.b); // 2
+		console.log(rose.z); // undefined
+
+		gold.z = 3; // adding a new Z property to the gold object
+		console.log(blue.z); // undefined as no property is found in the blue object
+		console.log(rose.z); // 3
+		rose.toString(); // rose using a shared function
+
+
+	</script>
+
+</body>
+</html>
