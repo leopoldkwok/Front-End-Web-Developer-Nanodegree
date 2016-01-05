@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>one-time property copying</title>
+</head>
+<body>
+	<script>
+		var gold = {a:1};
+		console.log(gold.a); // 1
+		console.log(gold.z); //undefined
+
+		var blue = extend({}, gold); // copys all the properties of the object from gold
+
+	</script>
+
+</body>
+</html>
