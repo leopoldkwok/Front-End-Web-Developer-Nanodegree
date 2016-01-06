@@ -5,7 +5,7 @@ var Car = function(loc) { // set the car location
 };
 
 
-Car.prototype.move = function() {
+Car.prototype.move = function() { // prototype instead of key .method is purely cosmetics
 		this.loc++;
 };
 

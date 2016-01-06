@@ -16,7 +16,7 @@
 		image.onload = function() {
 			console.log("Loaded image");
 			ctx.drawImage(image, 0, 0, c.width, c.height);
-			var savedImage = c.toDataURL();
+			var savedImage = c.toDataURL(); // creates a text string that represents the image
 			window.open(savedImage); //opens image in new window
 		}
 

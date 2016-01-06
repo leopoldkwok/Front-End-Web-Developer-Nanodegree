@@ -1,11 +1,7 @@
-var Car = function(loc) { // set the car location
-	// this = Object.create(Car.prototype); - with using New this line is used invisibliy
+var Car = function(loc) {
 	this.loc = loc;
-
-	// retrn this; - with using New this line is used invisibly
 };
-
-
+// prototype chains is good for saving memory
 Car.prototype.move = function() {
-		this.loc++;
+	this.loc++;
 };

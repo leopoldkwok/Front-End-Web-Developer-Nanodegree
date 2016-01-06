@@ -4,4 +4,4 @@ var Dog = function() {
 
 var fido = Dog();
 
-console.log(fido instanceof Dog);
+console.log(fido instanceof Dog); // Dog.prototype cannot be found

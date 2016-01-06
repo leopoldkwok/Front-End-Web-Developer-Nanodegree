@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Predicting Undefined Property Lookups</title>
+	<title>Property Lookup of delegated objects</title>
 </head>
 <body>
 	<script>
@@ -26,6 +26,7 @@
 
 		gold.z = 3; // adding a new Z property to the gold object
 		console.log(blue.z); // undefined as no property is found in the blue object
+		console.log(rose.z); // 3 - lookups to the prototype object
 
 	</script>
 
