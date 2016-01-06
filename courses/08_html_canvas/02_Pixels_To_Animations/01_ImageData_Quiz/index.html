@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Data Quiz</title>
+</head>
+<body>
+	<canvas width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		var canvas = document.querySelector("canvas");
+		var ctx = canvas.getContext("2d");
+		// Get Image Data object
+		var data = ctx.getImageData(0,0,400,400); // Data pixels
+
+		function paintGreen(imageData) {
+			var numPixels = imageData.data.length / 4;
+			for (var i = 0; i < numPixels; i++) {
+				if (i % 10 === 0) {
+					imageData.data[i * 4 + 1] = 255;
+					imageData.data[i * 4 + 3] = 255;
+				}
+			}
+			ctx.putImageData(imageData, 0, 0);
+		}
+
+		paintGreen(data);
+
+		// Working with ImageData
+
+		// 1) Create a Canvas2DRenderingContext
+
+		// 2) Call getImageData to retrieve the pixels in the canvas
+
+		// 3) Change every 10th pixel to a solid green color.
+
+		// Hint: Colors values range from 0 - 255
+
+	</script>
+</body>
+</html>
+
