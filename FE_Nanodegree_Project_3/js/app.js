@@ -70,7 +70,7 @@ Player.prototype.handleInput = function(input) {
     switch(input) {
         case "down":
             // allows the player to move down if not at the bottom of the screen
-            if (this.y < 385) {
+            if (this.y < 390) {
                 this.y = this.y + 80;
             }
             break;
@@ -84,13 +84,13 @@ Player.prototype.handleInput = function(input) {
         case "right":
             // allows the player to move right but not off the grid
             if (this.x < 380) {
-                this.x = this.x + 90;
+                this.x = this.x + 100;
             }
             break;
         case "left":
             // allows the player to move left but not off the grid
-            if (this.x > 100) {
-                this.x = this.x - 90;
+            if (this.x > 90) {
+                this.x = this.x - 100;
             }
             break;
     }
