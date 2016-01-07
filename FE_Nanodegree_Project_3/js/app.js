@@ -70,7 +70,7 @@ Player.prototype.handleInput = function(input) {
     switch(input) {
         case "down":
             // allows the player to move down if not at the bottom of the screen
-            if (this.y < 390) {
+            if (this.y < 380) {
                 this.y = this.y + 80;
             }
             break;
