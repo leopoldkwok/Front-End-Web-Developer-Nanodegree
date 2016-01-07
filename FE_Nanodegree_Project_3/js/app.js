@@ -20,6 +20,18 @@ Enemy.prototype.update = function(dt) {
     // all computers.
 
     this.x = (dt*this.speed) + this.x;
+
+    // Checks to see if the enemy has collided with the player
+    if (player.x < this.x + 100 && player.x > this.x - 50) {
+        if (player.y > this.y - 50 && player.y < this.y + 50) {
+            player.reset();
+        }
+    }
+
+    // When the enemies havefinished moving across the grid they will start at the beginning of the grid in random x-positions
+    if (this.x > 600) {
+        this.x = (-400) * Math.random();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -32,8 +44,8 @@ Enemy.prototype.render = function() {
 var Player = function() {
 
     this.sprite = 'images/char-boy.png'; // Takes the boy image from the images folder
-    this.x = 200; // x axis positioning
-    this.y = 385; // y axis positioning
+    this.x = 200; // default x axis position for player
+    this.y = 385; // default y axis position for player
 
 };
 
@@ -54,15 +66,20 @@ Player.prototype.render = function() {
 // a handleInput() method.
 
 Player.prototype.handleInput = function(input) {
-
+// use switch statement to determine key pressed and players movement
     switch(input) {
         case "down":
+            // allows the player to move down if not at the bottom of the screen
             if (this.y < 385) {
                 this.y = this.y + 80;
             }
             break;
         case "up":
+            // allows the player to move up and once they reach the other side they will reset back to initial x and y positions
             this.y = this.y - 80;
+            if (this.y <= 10) {
+                this.reset();
+            }
             break;
         case "right":
             // allows the player to move right but not off the grid
@@ -77,6 +94,10 @@ Player.prototype.handleInput = function(input) {
             }
             break;
     }
+
+    //printing coordinates of player helps me adjust code from playing the game feedback
+    console.log("x" + this.x);
+    console.log("y" + this.y);
 
 };
 
