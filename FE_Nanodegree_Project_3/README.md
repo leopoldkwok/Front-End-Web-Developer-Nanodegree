@@ -1,6 +1,17 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+## How to run the game
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Clone this repository and open the index.html file in a browser.
+
+## How to play the game
+
+Once you have the game running in your browser. Use the "Up", "Down, "Left", "Right" arrow keys to navigate the player past the enemies to reach the other side without colliding with any of the enemies. When the player collides with an enemy or reaches the other side, the game will reset the player's position to the bottom of the grid.
+
+#### Directory Structure
+
+- index.html
+- css folder holds the stylesheet
+- images folder holes the sprite assets used in the game
+- js (javascript) folder holds the game engine (engine.js), the game resources (resources.js) and the logic for the game itself (app.js)

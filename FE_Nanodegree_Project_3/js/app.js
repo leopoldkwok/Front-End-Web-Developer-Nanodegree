@@ -19,7 +19,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    this.x = (dt*this.speed) + this.x;
+    this.x = (dt * this.speed) + this.x;
 
     // Checks to see if the enemy has collided with the player
     if (player.x < this.x + 100 && player.x > this.x - 50) {
@@ -52,7 +52,7 @@ var Player = function() {
 // This class requires an update(),
 
 Player.prototype.update = function(dt) {
-
+    // No need to use this function
 };
 
 //render() - to display the player on the board and
@@ -60,8 +60,6 @@ Player.prototype.update = function(dt) {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-
 
 // a handleInput() method.
 
@@ -124,9 +122,7 @@ Player.prototype.reset = function() {
 
 var allEnemies = []; // initialise an empty array for allEnemies
 
-// var allEnemies = [enemy1, enemy2, enemy3];
-
-// Set random start x positions for the enemies and fixed y -axis positions for the stone walkways
+// Set random start x positions for the enemies and fixed y-axis positions for the stone walkways
 var allEnemies = [
                     new Enemy(-500*Math.random(), 225),
                     new Enemy(-500*Math.random(), 150),
