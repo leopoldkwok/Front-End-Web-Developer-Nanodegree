@@ -52,7 +52,7 @@ var Player = function() {
 // This class requires an update(),
 
 Player.prototype.update = function(dt) {
-    // No need to use this function
+    // no op
 };
 
 //render() - to display the player on the board and
