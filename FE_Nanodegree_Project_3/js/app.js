@@ -22,7 +22,7 @@ Enemy.prototype.update = function(dt) {
     this.x = (dt * this.speed) + this.x;
 
     // Checks to see if the enemy has collided with the player
-    if (player.x < this.x + 100 && player.x > this.x - 50) {
+    if (player.x < this.x + 75 && player.x > this.x - 75) {
         if (player.y > this.y - 50 && player.y < this.y + 50) {
             player.reset();
         }
@@ -93,18 +93,10 @@ Player.prototype.handleInput = function(input) {
             break;
     }
 
-    //printing coordinates of player helps me adjust code from playing the game feedback
-    console.log("x" + this.x);
-    console.log("y" + this.y);
-
 };
 
 
 // Now instantiate your objects.
-
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
 
 // Place the player object in a variable called player
 
