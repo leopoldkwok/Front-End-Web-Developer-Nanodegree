@@ -40,7 +40,35 @@ function loadData() {
             $nytElem.append('<li class="article">' +
                 '<a href="' + article.web_url+'">'+article.headline.main+'</a>' + '<p>' + article.snippet + '</p>' + '</li>');
         };
+
+    }).error(function(e) {
+        $nytHeaderElem.text('New York Times Articles Could Not Be Loaded');
     });
+
+    // Wikipedia AJAX request goes here
+    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='
+                + cityStr + '&format=json&callback=wikiCallback';
+
+    $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+        // jsonp: "callback",
+        success: function(response) {
+            var articleList = response[1];
+
+            for (var i = 0; i < articleList.length; i++) {
+                articleStr = articleList[i];
+                var url = 'http://en.wikipedia.org/wiki/' + articleStr;
+                $wikiElem.append('<li><a href="' + url + '">' +
+                    articleStr + '</a></li>');
+            };
+        }
+    });
+
+
+
+
+
 
 
 
