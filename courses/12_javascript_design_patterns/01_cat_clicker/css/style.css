@@ -1,0 +1,11 @@
+/** {box-sizing:border-box;}*/
+body {background-color: #CCC;}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
