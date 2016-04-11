@@ -67,6 +67,12 @@
 
     button.addEventListener('click', function() {
       document.body.classList.toggle('toggled');
+
+      var boxes = container.querySelectorAll('.box'); // look for all elements with .box with querySelectorAll
+      for (var i = 1; i < boxes.length; i+=2) {
+        boxes[i].classList.toggle('gray',
+          document.body.classList.contains('toggled'));
+      }
     });
 
     </script>
