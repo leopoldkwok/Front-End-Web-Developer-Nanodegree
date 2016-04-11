@@ -30,11 +30,34 @@ Some useful tips to help you get started:
 
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
+Part 1 - Optimisations on index.html file:
+
+1. Added 'async' to all analytics code-blocks since it doesn't affect the page and placed it at the bottom of the body tag in the index.html file.
+2. Minify js file and load at the end of the index.html file will solve js blocking dom and cssom construction problem.
+3. Placed style.css and the google fonts into index.html
+4. Optimize images
+
+Mobile
+96 / 100
+
+Desktop
+97 / 100
+
+
+
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+
+1. Use 'strict' in every function.
+2. Resized pizzeria.jpg and pizza.png image files.
+3. Change querySelector and querySelectorAll to getElementById and getElementsByClassName, to make it faster.
+4. Create all the variables outside of loops where possible. Put "dx" and "newWidth" outside the loop, since pizza size doesn't change.
+5. Place the scrollNumber variable outside the loop to separate the manipulation of the DOM from the methods that query the state.
+6. Use screen height to calculate number of pizzas to display rather than having it hard coded to 200 pizzas
+
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
