@@ -42,6 +42,7 @@ Part 1 - Optimisations on index.html file:
 2. Minify js file and load at the end of the index.html file will solve js blocking dom and cssom construction problem.
 3. Placed style.css and the google fonts into index.html
 4. Optimize images
+5. Used Photoshop to reduce the image size of pizzeria.jpg.
 
 Mobile
 96 / 100
