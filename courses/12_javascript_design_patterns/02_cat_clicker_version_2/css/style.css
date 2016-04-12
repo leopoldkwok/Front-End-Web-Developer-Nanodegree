@@ -1,0 +1,19 @@
+* {box-sizing:border-box;}
+
+body {
+	background-color: #CCC;
+}
+
+#cats {
+	display: block;
+	margin: 0 auto;
+	width: 1300px;
+}
+
+.cat {
+	display: inline;
+}
+
+h1 {
+	text-align: center;
+}
