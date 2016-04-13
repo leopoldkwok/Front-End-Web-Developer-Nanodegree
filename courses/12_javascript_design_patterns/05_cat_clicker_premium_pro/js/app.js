@@ -1,7 +1,7 @@
 // MODEL
 
 var model = {
-	currentCat : null,
+	currentCat: null,
 	cats: [
 		{
 			clickCount : 0,
@@ -31,6 +31,35 @@ var model = {
 	]
 };
 
+// 	adminMode: false,
+// 	adminPanelForm : {
+// 		inputs : [
+// 					{
+// 						label : "Name",
+// 						type : 'text',
+// 						id : 'name-input',
+// 					},
+// 					{
+// 						label : 'Image URL',
+// 						type : 'text',
+// 						id : 'image-input'
+// 					},
+// 					{
+// 						label : 'Click Count',
+// 						type : 'text',
+// 						id : 'click-count-input'
+// 					}
+// 				],
+// 		buttons : [
+// 					{
+// 						type : 'submit',
+// 						value : 'Cancel',
+// 						id : 'admin-submit'
+// 					}
+// 				]
+// 	}
+// };
+
 // Octopus
 
 var octopus = {
@@ -42,6 +71,7 @@ var octopus = {
 		// Initialize our views
 		catListView.init();
 		catView.init();
+		adminView.init();
 	},
 
 	getCurrentCat: function() {
@@ -61,6 +91,27 @@ var octopus = {
 	incrementCounter: function() {
 		model.currentCat.clickCount++;
 		catView.render();
+	},
+
+	changeCatDetails: function(newCatData) {
+		var cats = octopus.getCats();
+		var currCat = octopus.getCurrentCat();
+		console.log(currCat);
+		for(var i = 0; i < cats.length; i++) {
+			if(cats[i].name === currCat.name) {
+				cats[i].clickCount = newCatData.clickCount;
+				cats[i].name = newCatData.name;
+				cats[i].imgSrc = newCatData.imgSrc;
+				octopus.setCurrentCat(newCatData);
+				catListView.render();
+				catView.render();
+				adminView.render(false);
+			}
+		}
+	},
+
+	hideAdminForm: function() {
+		adminView.render(false);
 	}
 };
 
@@ -78,6 +129,7 @@ var catView = {
 		// on click, increment the current cat's counter
 		this.catImageElem.addEventListener('click', function() {
 			octopus.incrementCounter();
+			octopus.hideAdminForm();
 		});
 
 		// render this view (update the DOM elements with the right values)
@@ -128,6 +180,7 @@ var catListView = {
 				return function() {
 					octopus.setCurrentCat(catCopy);
 					catView.render();
+					octopus.hideAdminForm();
 				};
 			})(cat));
 
@@ -135,6 +188,52 @@ var catListView = {
 			this.catListElem.appendChild(elem);
 		}
 	}
+};
+
+var adminView = {
+		init : function() {
+			this.adminDiv = document.getElementById('admin');
+			this.adminBtn = document.getElementById("admin-btn");
+			this.adminForm = document.getElementById("admin-form");
+			this.adminFormName = this.adminForm.name;
+			this.adminFormImgUrl = this.adminForm.imgUrl;
+			this.adminFormClicks = this.adminForm.clicks;
+			console.log(this.adminBtn);
+			this.adminBtn.addEventListener('click', function() {
+				adminView.render(true);
+			});
+		},
+
+		render : function(displayForm) {
+			var currentCat = octopus.getCurrentCat();
+			if(displayForm == false) {
+				this.adminForm.className = 'hidden';
+			}
+			else {
+				this.adminForm.className = 'display';
+				this.adminFormName.value = currentCat.name;
+				this.adminFormImgUrl.value = currentCat.imgSrc;
+				this.adminFormClicks.value = currentCat.clickCount;
+				this.submitBtn = document.getElementById("submit");
+				this.cancelBtn = document.getElementById("cancel");
+				console.log(this.submitBtn);
+				this.submitBtn.addEventListener('click', function(event){
+					event.preventDefault();
+					var newName = document.getElementById("admin-form").name.value;
+					var newUrl = document.getElementById("admin-form").imgUrl.value;
+					var newClicks = document.getElementById("admin-form").clicks.value;
+					var newCatData = {
+						clickCount : newClicks,
+						imgSrc : newUrl,
+						name : newName
+					};
+					console.log(newCatData);
+					octopus.changeCatDetails(newCatData);
+				});
+
+			}
+		}
+
 };
 
 // make it go!
