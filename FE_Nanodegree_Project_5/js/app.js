@@ -1,24 +1,65 @@
-function loadData() {
+// Points of interest saved in an array
 
-  var $body = $('body');
-  var $wikiElem = $('#wikipedia-links');
-  var $greeting = $('#greeting');
+var places = [
+  {
+    name: 'Big Ben',
+    latLang: new google.maps.LatLng(51.500956, -0.124582)
+  },
+  {
+    name: 'Tower Bridge',
+    latLang: new google.maps.LatLng(51.505650, -0.075389)
 
-  // Clear out the old data before the new request
-  $wikiElem.text("");
+  },
+  {
+    name: 'Tower of London',
+    latLang: new google.maps.LatLng(51.508286, -0.075949)
+  },
+  {
+    name: 'Westminister Abbey',
+    latLang: new google.maps.LatLng(51.499492, -0.127342)
+  },
+  {
+    name: 'London Eye',
+    latLang: new google.maps.LatLng(51.503511, -0.119564)
+  }];
 
-  // Load street view
-  var poiStr = $('#poi').val();
+// This is the model
+var Place = function(data) {
+  this.name = ko.observable(data.name);
+  this.latLang = ko.observable(data.latLang);
+};
 
-  $greeting.text('So, you want to live at ' + poiStr + '?');
+var ViewModel = function(data) {
+  var self = this;
+  this.placeList = ko.observableArray([]);
+
+  places.forEach(function(aplace){
+    self.placeList.push(new Place(aplace));
+  });
+
+  this.currentPlace = ko.observable('London');
+
+  this.setPlace = function(chosenPlace) {
+    self.currentPlace(chosenPlace);
+  };
+
+  this.loadData = function() {
+    var $wikiElem = $('#wikipedia-links');
+    var $greeting = $('#greeting');
+
+    // clear out old data before new request
+    $wikiElem.text("");
+
+    var poiStr = $('#poi').val();
+    $greeting.text('So, you want to explore at ' + poiStr + '?');
 
   // Wikipedia stuff
-
   var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + poiStr + '&format=json&callback=wikiCallback';
 
   var wikiRequestTimeout = setTimeout(function() {
     $wikiElem.text("failed to get wikipedia resources");
-  }, 8000);
+  }, 5000);
+
 
   $.ajax({
     url: wikiUrl,
@@ -37,47 +78,43 @@ function loadData() {
   return false;
 };
 
-$('#form-container').submit(loadData);
 
-var places = [
-{
-  name: 'Buckingham Palace',
-  latLang: new google.maps.LatLng(52.5072, 0.1275)
-},
-{
-  name: 'Kensington Palace',
-  latLang: new google.maps.LatLng(53.5072, 0.1275)
-},
-{
-  name: 'Picaddily Circus',
-  latLang: new google.maps.LatLng(56.5072, 0.1275)
-},
-{
-  name: 'Royal Albert Hall',
-  latLang: new google.maps.LatLng(55.5072, 0.1275)
-},
-{
-  name: 'The British Museum',
-  latLang: new google.maps.LatLng(54.5072, 0.1275)
-}];
+$('#form-container').submit(this.loadData);
 
-var Place = function(data) {
-  this.name = ko.observable(data.name);
-};
+// This initializes the Google Maps section, and puts markers for all the places
+this.initialize = function() {
+  var mapCanvas = document.getElementById('map-canvas');
+  // Co-ordinates of Central London
+  var myLatLng = new google.maps.LatLng(51.5072, -0.1276);
+  var mapOptions = {
+    center: myLatLng,
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
 
-var ViewModel = function(data) {
-  var self = this;
-  this.placeList = ko.observableArray([]);
+  var map = new google.maps.Map(mapCanvas,mapOptions);
 
-  places.forEach(function(aplace){
-    self.placeList.push(new Place(aplace));
+  var contentString = 'You clicked this';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
   });
 
-  this.currentPlace = ko.observable(this.placeList()[0]);
+  var numPlaces = places.length;
+  for (i = 0; i < numPlaces; i++) {
+    var marker = new google.maps.Marker({
+      position: places[i].latLang,
+      map: map,
+      title: places[i].name
+    });
 
-  this.setPlace = function(clickedPlace) {
-    self.currentPlace(clickedPlace);
+    google.maps.event.addListener(marker,'click',(function(markerCopy){
+      return function(){
+        infowindow.open(map, markerCopy);
+      };
+    })(marker));
   };
+};
+  google.maps.event.addDomListener(window, 'load', this.initialize);
 }
 
 ko.applyBindings(new ViewModel());
