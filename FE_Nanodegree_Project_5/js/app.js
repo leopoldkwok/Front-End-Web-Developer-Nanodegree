@@ -24,14 +24,14 @@ var PlacePageModel = function(data) {
   };
 
 // Load the Wikipedia articles when user searches for a place
-this.loadData = function() {
+this.loadData = function(place) {
   var $wikiElem = $('#wikipedia-links');
   var $greeting = $('#greeting');
 
   // clear out old data before new request
   $wikiElem.text("");
 
-  var poiStr = String(place.name);
+  var poiStr=String(place.name);
   var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + poiStr + '&format=json&callback=wikiCallback';
 
   // Error Handling, this will show a text message if articles fail to load
@@ -40,13 +40,11 @@ this.loadData = function() {
   }, 5000);
 
   // Make an ajax call to wikiURL and append results to DOM wiki element
-
   $.ajax({
     url: wikiUrl,
     dataType: "jsonp",
     success: function(response) {
       var articleList = response[1];
-
       for (var i = 0; i < articleList.length; i++) {
         articleStr = articleList[i];
         var url = 'http://en.wikipedia.org/wiki/' + articleStr;
@@ -187,7 +185,7 @@ ko.applyBindings(new PlacePageModel(places));
 // This initializes the Google Maps section, and puts markers for all the places
 var initialize = function() {
   var mapCanvas = document.getElementById('map-canvas');
-  // Co-ordinates of Central London
+  // Co-ordinates of Central London on google map
   var myLatLng = new google.maps.LatLng(51.5067, -0.1428);
   var mapOptions = {
     center: myLatLng,

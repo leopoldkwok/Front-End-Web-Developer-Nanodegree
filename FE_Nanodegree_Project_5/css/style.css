@@ -24,3 +24,8 @@ body {
   margin-right: 10px;
   background-color: rgba (255,255,255,0.7);
 }
+
+#poi:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
