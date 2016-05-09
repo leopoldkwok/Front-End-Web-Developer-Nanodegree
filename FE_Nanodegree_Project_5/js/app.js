@@ -28,6 +28,73 @@ var places = [
     name: 'London Eye',
     lat: 51.503511,
     lon: -0.119564
+  },
+  {
+    name: 'Imperial War Museum',
+    lat: 51.495736,
+    lon: -0.108609
+  },
+  {
+    name: 'London Zoo',
+    lat: 51.535501,
+    lon: -0.153441
+  },
+  {
+    name: 'The British Museum',
+    lat: 51.519627,
+    lon: -0.126946
+  },
+  {
+    name: 'Royal Albert Hall',
+    lat: 51.501243,
+    lon: -0.177448
+  },
+  {
+    name: 'Harrods',
+    lat: 51.499434,
+    lon: -0.163228
+  },
+  {
+    name: 'Science Museum',
+    lat: 51.497838,
+    lon: -0.174536
+  },
+  {
+    name: 'The Sherlocks Holmes Museum',
+    lat: 51.523798,
+    lon: -0.158559
+  },
+  {
+    name: 'Madame Tussauds',
+    lat: 51.522884,
+    lon: -0.154935
+  },
+  {
+    name: 'Natural History Museum',
+    lat: 51.496761,
+    lon: -0.176360},
+  {
+    name: 'Hyde Park',
+    lat: 51.507233,
+    lon: -0.166232
+  },
+  {
+    name: 'Abbey Roads Studios',
+    lat: 51.532008,
+    lon: -0.178306
+  },
+  {
+    name: 'St. Pauls Cathedral',
+    lat: 51.514026,
+    lon: -0.098372},
+  {
+    name: 'Tate Modern',
+    lat: 51.507628,
+    lon: -0.099272},
+  {
+    name: 'National Gallery',
+    lat: 51.508953,
+    lon: -0.128339
 }];
 
 var Place = function(data) {
@@ -211,6 +278,7 @@ var initialize = function() {
   var mapCanvas = document.getElementById('map-canvas');
   // Co-ordinates of Central London on google map
   var myLatLng = new google.maps.LatLng(51.5067, -0.1428);
+
   var mapOptions = {
     center: myLatLng,
     zoom: 12,
@@ -234,7 +302,7 @@ var initialize = function() {
     // Add functionality to differentiate clicked vs unclicked markers
     google.maps.event.addListener(markers[i],'click',(function(markerCopy){
       return function(){
-        infowindow.setContent(markerCopy,title);
+        infowindow.setContent(markerCopy.title);
         infowindow.open(map, markerCopy);
       };
     })(markers[i]));

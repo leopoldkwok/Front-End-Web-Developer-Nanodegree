@@ -9,13 +9,18 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+label {
+  margin-left: 16px;
+}
+
 .greeting {
   margin-top: 20px;
+  margin-left: 10px;
 }
 
 .map-canvas {
   height: 450px;
-  border: 5px solid black;
+  border: 4px solid black;
   margin: 10px;
 }
 
