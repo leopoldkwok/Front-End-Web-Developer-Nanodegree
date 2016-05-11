@@ -1,5 +1,5 @@
 // This is the Data Model, each data point has a name and latlong co-ordinates
-"use strict"
+"use strict";
 
 // Save all the points of interest
 
@@ -309,12 +309,17 @@ var initialize = function() {
   }
 };
 
-// When google maps fails to load, user will see this error message
-try {
+
+function initMap() {
+  // this function will be called when the google maps api is loaded
   google.maps.event.addDomListener(window,'load', initialize);
-} catch(err) {
+}
+
+function errorHandling() {
+  // this function will be called when the google maps api is failed to load
   document.getElementById("map-canvas").innerHTML = 'Sorry, cannot load google map';
 }
+
 
 // List of places annd wikipedia articles collapsible so it is easier to view on mobile devices
 $('#allPlaces').collapsible('default-open');

@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 label {
@@ -29,7 +29,8 @@ label {
   background-color: rgba (255,255,255,0.7);
 }
 
-.click:hover, .poi:hover {
+.click:hover,
+.poi:hover {
   font-weight: bold;
   cursor: pointer;
 }
