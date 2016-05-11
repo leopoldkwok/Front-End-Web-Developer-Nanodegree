@@ -301,15 +301,31 @@ var initialize = function() {
       animation: google.maps.Animation.DROP,
       title: places[i].name
     });
+
     // Add functionality to differentiate clicked vs unclicked markers
     google.maps.event.addListener(markers[i],'click',(function(markerCopy){
+
       return function(){
+
         infowindow.setContent(markerCopy.title);
         infowindow.open(map, markerCopy);
+        markerCopy.setAnimation(google.maps.Animation.BOUNCE);
+
       };
     })(markers[i]));
   }
 };
+
+// plen.addListener('click', toggleBounce);
+
+// function toggleBounce() {
+//   if (marker.getAnimation() !== null) {
+//     marker.setAnimation(null);
+//   } else {
+//     marker.setAnimation(google.maps.Animation.BOUNCE);
+//   }
+// }
+
 
 
 function initMap() {
