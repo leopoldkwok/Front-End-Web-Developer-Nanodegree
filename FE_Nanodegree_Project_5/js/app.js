@@ -274,6 +274,7 @@ ko.applyBindings(new PlacePageModel(places));
 // This initializes the Google Maps section, and puts markers for all the places
 var map;
 var markers = [];
+
 var initialize = function() {
   var mapCanvas = document.getElementById('map-canvas');
   // Co-ordinates of Central London on google map
@@ -297,6 +298,7 @@ var initialize = function() {
     markers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(places[i].lat, places[i].lon),
       map: map,
+      animation: google.maps.Animation.DROP,
       title: places[i].name
     });
     // Add functionality to differentiate clicked vs unclicked markers

@@ -25,8 +25,8 @@ label {
 }
 
 .wikipedia-container {
-  position: left;
-  background-color: rgba (255,255,255,0.7);
+  float: left;
+  background: rgba (255,255,255,0.7);
 }
 
 .click:hover,
