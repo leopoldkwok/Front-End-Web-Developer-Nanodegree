@@ -310,22 +310,12 @@ var initialize = function() {
         infowindow.setContent(markerCopy.title);
         infowindow.open(map, markerCopy);
         markerCopy.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){ markerCopy.setAnimation(null); }, 3000);
 
       };
     })(markers[i]));
   }
 };
-
-// plen.addListener('click', toggleBounce);
-
-// function toggleBounce() {
-//   if (marker.getAnimation() !== null) {
-//     marker.setAnimation(null);
-//   } else {
-//     marker.setAnimation(google.maps.Animation.BOUNCE);
-//   }
-// }
-
 
 
 function initMap() {
