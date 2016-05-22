@@ -60,7 +60,13 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+        /* TODO#3: Write a new test suite named "The menu" */
+        describe('The menu', function() {
+        // declare variables
+        var body;
+        beforeEach(function() {
+          body = $('body');
+        });
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -68,12 +74,29 @@ $(function() {
          * hiding/showing of the menu element.
          */
 
+        it('should be hiddeny by default', function() {
+          // Ensure the menu is hiddent by defauly
+          expect(body.hasClass('menu-hidden')).toBe(true);
+        });
+
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
 
+        it('changes visibility when menu icon is clicked', function() {
+          var menuIcon = $('.menu-icon-link');
+          // Check if triggering click displays the menu
+          menuIcon.trigger('click');
+          expect(body.hasClass('menu-hidden')).toBe(false);
+          // Check if triggering click hides the menu
+          menuIcon.trigger('click');
+          expect(body.hasClass('menu-hidden')).toBe(true);
+        })
+
+
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
