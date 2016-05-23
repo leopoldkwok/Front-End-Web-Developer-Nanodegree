@@ -95,9 +95,9 @@ $(function() {
           expect(body.hasClass('menu-hidden')).toBe(true);
         })
 
-
     });
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /* TODO#4: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -105,11 +105,53 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        beforeEach(function(done) {
+          // load the initial feed with call back
+          loadFeed(0, function() {
+            // call done() to trigger the spec
+            done();
+          });
+        });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+        it('should have at least a single feed entry element after load', function(done) {
+          // Check that length of entries is more than 0
+          expect($('.feed .entry').length).toBeGreaterThan(0);
+          // Call done() to finsh the spec
+          done();
+        });
+
+    });
+
+    /* TODO#5: Write a new test suite named "New Feed Selection" */
+
+    describe('New Feed Selection', function() {
+      // Declare two variables to contain the content of the first and second feed
+      var firstFeed,
+          secondFeed;
+
+      beforeEach(function(done) {
+        // Load the first feed
+        loadFeed(0, function() {
+          // Get the content of the first h2 element
+          firstFeed = $('.feed').find('h2').text();
+          done();
+        });
+      });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it ('changes the content inside .feed container', function(done) {
+          // Load the first second feeds
+          loadFeed(1, function() {
+            // Get the content of the first h2 element
+            secondFeed = $('.feed').find('h2').text();
+
+            // Compare firstFeed with secondFeed
+            expect(firstFeed).not.toEqual(secondFeed);
+            done();
+          });
+        });
+    });
 }());
